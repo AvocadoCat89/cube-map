@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Куб.Мета — тестовая карта</title>
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        window.onload = function () {
+            const host = window.location.host;
+            let path = window.location.pathname;
+            if (path.endsWith('index.html')) {
+                path = path.substr(path, path.length - 'index.html'.length);
+            }
+            const instanceId = Math.random().toString(36).substring(2, 15);
+            const url = `https://sticmsu.cubemeta.ru/_/${instanceId}/${host}${path}office.tmj`;
+            document.getElementById('testMapURL').href = url;
+            document.getElementById('testMapBtnURL').href = url;
+            document.getElementById('testMapURL').innerText = url;
+
+            const tmjURL = window.location.protocol + '//' + window.location.host + path + 'office.tmj';
+            document.getElementById('tmjURL').innerText = tmjURL;
+
+        };
+    </script>
+
+    <style>
+        :root {
+            --bg: #e8e5de;
+            --blue: #5B6BF5;
+            --text: #111111;
+            --text-muted: #666;
+            --white: #ffffff;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── Pixel border top ── */
+        .pixel-border {
+            display: block;
+            width: 100%;
+            line-height: 0;
+        }
+
+        /* ── Header ── */
+        header {
+            padding: 36px 48px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo-wordmark {
+            display: inline-block;
+            line-height: 0;
+        }
+
+        .logo-wordmark img {
+            height: 36px;
+            width: auto;
+        }
+
+        /* ── Content ── */
+        .content {
+            flex: 1 0 auto;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 64px 48px 96px;
+            width: 100%;
+        }
+
+        /* ── Hero ── */
+        .hero-label {
+            display: inline-block;
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: rgba(91,107,245,0.1);
+            padding: 6px 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
+            color: var(--text);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 480px;
+            line-height: 1.65;
+            margin-bottom: 48px;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: var(--white);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+        }
+
+        /* pixel corner accent */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--blue);
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--text);
+        }
+
+        /* pixel shadow frame around map image */
+        .map-frame {
+            position: relative;
+            display: block;
+        }
+
+        .map-frame::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            box-shadow: 8px 8px 0 var(--blue);
+            pointer-events: none;
+        }
+
+        .map-img {
+            width: 100%;
+            display: block;
+            image-rendering: pixelated;
+        }
+
+        /* ── Card body ── */
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .url-block {
+            background: var(--bg);
+            padding: 14px 16px;
+            border-left: 4px solid var(--blue);
+        }
+
+        .url-text {
+            font-family: 'Courier New', monospace;
+            font-size: 11.5px;
+            color: var(--text-muted);
+            word-break: break-all;
+            line-height: 1.55;
+            text-decoration: none;
+            display: block;
+            transition: color 0.2s;
+        }
+
+        .url-text:hover {
+            color: var(--blue);
+        }
+
+        .tips {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ── Pixel button ── */
+        .btn-pixel {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--blue);
+            color: var(--white);
+            font-family: 'Manrope', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            position: relative;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 6px 6px 0 var(--text);
+            align-self: flex-start;
+        }
+
+        .btn-pixel:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--text);
+        }
+
+        .btn-pixel:active {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--text);
+        }
+
+        /* ── Footer ── */
+        footer {
+            flex-shrink: 0;
+            background: var(--blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 48px 36px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-brand {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(2.8rem, 9vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: var(--white);
+            text-decoration: none;
+            line-height: 1;
+            transition: opacity 0.2s;
+        }
+
+        .footer-brand:hover {
+            opacity: 0.85;
+        }
+
+        .footer-dot {
+            font-family: 'Manrope', sans-serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: rgba(255,255,255,0.5);
+            font-weight: 900;
+            line-height: 1;
+            padding-bottom: 0.15em;
+        }
+
+        /* decorative pixel squares in footer */
+        .px-sq {
+            position: absolute;
+            background: rgba(255,255,255,0.12);
+        }
+
+        @media (max-width: 660px) {
+            header { padding: 20px 24px 0; }
+            main { padding: 36px 24px 60px; }
+
+            .card {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 28px;
+            }
+
+            .footer-inner { padding: 32px 24px 28px; }
+            .footer-brand { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="content">
+        <header>
+            <a href="https://cubemeta.ru/" class="logo-wordmark" target="_blank">
+                <img src="/images/logo.svg" alt="КУБ.МЕТА">
+            </a>
+        </header>
+
+        <main>
+            <div class="hero-label">Тестовая среда</div>
+            <h1 class="hero-title">Запустите вашу карту</h1>
+            <p class="hero-sub">Протестируйте виртуальное пространство локально</p>
+
+            <div class="card">
+                <div class="map-frame">
+                    <img src="/office.png" alt="Миниатюра карты" class="map-img">
+                </div>
+
+                <div class="card-body">
+                    <div class="card-title">Ссылка для входа</div>
+
+                    <div class="url-block">
+                        <a id="testMapURL" href="#" class="url-text"></a>
+                    </div>
+
+                    <p class="tips">Чтобы открыть другую карту — найдите «office.tmj» в конце ссылки и замените на нужное имя файла.</p>
+
+                    <a id="testMapBtnURL" href="#" class="btn-pixel">Войти в пространство</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+</body>
+</html>
